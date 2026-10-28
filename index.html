@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dash Desktop Wallet</title>
+    <meta
+      name="description"
+      content="One wallet for all of Dash — Core payments, Platform identities and shielded transactions. Non-custodial and open source for macOS, Windows and Linux."
+    />
+    <meta property="og:title" content="Dash Desktop Wallet" />
+    <meta
+      property="og:description"
+      content="One wallet for all of Dash — Core payments, Platform identities and shielded transactions."
+    />
+    <meta property="og:image" content="icon.png" />
+    <meta name="theme-color" content="#008de4" />
+    <link rel="icon" type="image/png" href="icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="nav">
+      <div class="wrap nav-inner">
+        <a class="brand" href="#top">
+          <img src="icon.png" alt="" width="28" height="28" />
+          <span>Dash Desktop</span>
+        </a>
+        <nav class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#security">Security</a>
+          <a href="#download">Download</a>
+          <a href="https://github.com/pshenmic/dash-desktop-wallet" class="nav-gh">GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="wrap hero-inner">
+          <img class="hero-icon" src="icon.png" alt="Dash Desktop Wallet icon" width="112" height="112" />
+          <h1>One wallet for all of Dash</h1>
+          <p class="lede">
+            Core payments, Platform identities and shielded transactions in a single desktop app,
+            built on one recovery phrase. Your keys never leave your computer.
+          </p>
+
+          <div class="cta">
+            <a id="primary-download" class="btn btn-primary" href="https://github.com/pshenmic/dash-desktop-wallet/releases/latest">
+              <span id="primary-label">Download</span>
+            </a>
+            <a class="btn btn-ghost" href="#download">All platforms</a>
+          </div>
+          <p id="release-meta" class="meta">macOS · Windows · Linux &nbsp;·&nbsp; Free and open source (MIT)</p>
+        </div>
+      </section>
+
+      <section class="pillars">
+        <div class="wrap pillars-grid">
+          <div class="pillar">
+            <h3>Both layers, one seed</h3>
+            <p>Send DASH, register an identity, top it up and withdraw back to L1 without switching apps.</p>
+          </div>
+          <div class="pillar">
+            <h3>Private by choice</h3>
+            <p>Move credits into the shielded pool and transact between shielded addresses.</p>
+          </div>
+          <div class="pillar">
+            <h3>Your node, if you want it</h3>
+            <p>Start instantly through Dashscan, or switch to a built-in SPV client that syncs from the Dash P2P network.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" class="section">
+        <div class="wrap">
+          <h2>Features</h2>
+          <div class="features">
+            <article class="feature">
+              <span class="tag">L1</span>
+              <h3>Dash Core</h3>
+              <ul>
+                <li>Send DASH with fee preview and coin control</li>
+                <li>InstantSend and ChainLock status on every transaction</li>
+                <li>Full history with incoming and outgoing detection</li>
+                <li>Receive with QR code, label any address</li>
+                <li>Contacts for the people you pay often</li>
+              </ul>
+            </article>
+            <article class="feature">
+              <span class="tag">L2</span>
+              <h3>Dash Platform</h3>
+              <ul>
+                <li>Register identities, funded from L1 or Platform addresses</li>
+                <li>Top up, transfer and withdraw credits back to L1</li>
+                <li>DPNS usernames like <code>alice.dash</code> resolved automatically</li>
+                <li>Platform addresses for direct credit transfers</li>
+              </ul>
+            </article>
+            <article class="feature">
+              <span class="tag">Privacy</span>
+              <h3>Shielded transactions</h3>
+              <ul>
+                <li>Shield credits into the Orchard pool</li>
+                <li>Send privately between shielded addresses</li>
+                <li>Unshield or withdraw back out when you need to</li>
+              </ul>
+            </article>
+            <article class="feature">
+              <span class="tag">Network</span>
+              <h3>Connect your way</h3>
+              <ul>
+                <li>Mainnet and testnet</li>
+                <li>Dashscan mode: instant start, no sync</li>
+                <li>P2P mode: SPV sync with BIP157/158 compact filters</li>
+                <li>Manage peers, DNS seeds and fee multipliers</li>
+              </ul>
+            </article>
+            <article class="feature feature-wide">
+              <span class="tag">Wallets</span>
+              <h3>As many wallets as you need</h3>
+              <p>
+                Create or import BIP39 wallets, keep several and switch at any time, export your recovery phrase,
+                change a wallet's password, and see balances in USD, EUR, BTC or RUB.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="security" class="section section-alt">
+        <div class="wrap">
+          <h2>Security &amp; privacy</h2>
+          <div class="security">
+            <div>
+              <h3>Non-custodial</h3>
+              <p>Keys are derived on your machine. Nobody else can move your funds.</p>
+            </div>
+            <div>
+              <h3>Encrypted at rest</h3>
+              <p>Your recovery phrase is encrypted with AES-256-GCM using a key derived from your password with PBKDF2-SHA-512.</p>
+            </div>
+            <div>
+              <h3>No tracking</h3>
+              <p>No accounts, analytics, ads or crash reporting.</p>
+            </div>
+            <div>
+              <h3>Verified sync</h3>
+              <p>In P2P mode, headers are checked against difficulty rules and blocks against their merkle roots before anything is trusted.</p>
+            </div>
+          </div>
+          <p class="callout">
+            <strong>Write down your recovery phrase and keep it offline.</strong>
+            It is the only way to restore your wallet. Nobody, including the developers, can recover it for you.
+          </p>
+        </div>
+      </section>
+
+      <section id="download" class="section">
+        <div class="wrap">
+          <h2>Download</h2>
+          <p id="download-version" class="section-sub">
+            Get the latest version from
+            <a href="https://github.com/pshenmic/dash-desktop-wallet/releases/latest">GitHub Releases</a>.
+          </p>
+
+          <div class="platforms">
+            <article class="platform" data-platform="mac">
+              <h3>macOS</h3>
+              <p class="platform-note">Universal build for Apple silicon and Intel. Signed and notarized.</p>
+              <ul class="assets" data-assets="mac">
+                <li><a href="https://github.com/pshenmic/dash-desktop-wallet/releases/latest">Download .dmg</a></li>
+              </ul>
+            </article>
+
+            <article class="platform" data-platform="windows">
+              <h3>Windows</h3>
+              <p class="platform-note">64-bit installer for Windows 10 and 11.</p>
+              <ul class="assets" data-assets="windows">
+                <li><a href="https://github.com/pshenmic/dash-desktop-wallet/releases/latest">Download .exe</a></li>
+              </ul>
+              <p class="hint">
+                The installer is not code-signed yet, so SmartScreen may warn on first launch.
+                Choose <em>More info → Run anyway</em>.
+              </p>
+            </article>
+
+            <article class="platform" data-platform="linux">
+              <h3>Linux</h3>
+              <p class="platform-note">AppImage, .deb and Snap for x64 and arm64.</p>
+              <ul class="assets" data-assets="linux">
+                <li><a href="https://github.com/pshenmic/dash-desktop-wallet/releases/latest">Download from GitHub</a></li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="linux-install">
+            <div class="install-block">
+              <h3>Debian / Ubuntu: APT repository <span class="pill">Recommended</span></h3>
+              <p>Signed, and updates with the rest of your system.</p>
+              <div class="code">
+                <button class="copy" type="button" aria-label="Copy commands">Copy</button>
+                <pre><code>curl -fsSL https://pshenmic.github.io/dash-desktop/key.asc \
+  | sudo gpg --dearmor -o /usr/share/keyrings/dash-desktop.gpg
+
+echo "deb [signed-by=/usr/share/keyrings/dash-desktop.gpg] https://pshenmic.github.io/dash-desktop stable main" \
+  | sudo tee /etc/apt/sources.list.d/dash-desktop.list
+
+sudo apt update &amp;&amp; sudo apt install dash-desktop</code></pre>
+              </div>
+            </div>
+            <div class="install-block">
+              <h3>Snap</h3>
+              <p>Available on the <a href="https://snapcraft.io/dash-desktop-wallet">Snap Store</a>.</p>
+              <div class="code">
+                <button class="copy" type="button" aria-label="Copy command">Copy</button>
+                <pre><code>sudo snap install dash-desktop-wallet</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <p class="section-foot">
+            Looking for an older version or a pre-release? See
+            <a href="https://github.com/pshenmic/dash-desktop-wallet/releases">all releases</a>.
+            Prefer to build it yourself? Follow the
+            <a href="https://github.com/pshenmic/dash-desktop-wallet#build-from-source">build instructions</a>.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer-inner">
+        <span>MIT © pshenmic</span>
+        <nav>
+          <a href="https://github.com/pshenmic/dash-desktop-wallet">Source</a>
+          <a href="https://github.com/pshenmic/dash-desktop-wallet/blob/master/PRIVACY.md">Privacy policy</a>
+          <a href="https://github.com/pshenmic/dash-desktop-wallet/issues">Report an issue</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
