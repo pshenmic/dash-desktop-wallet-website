@@ -21,6 +21,8 @@ export const metadata: Metadata = {
     description: 'Dash Desktop Wallet — Core payments, Platform identities and shielded transactions.',
     images: '/icon.png'
   },
+  // The og image is the square app icon, not a wide banner
+  twitter: { card: 'summary' },
   icons: { icon: { url: '/icon.png', type: 'image/png' } }
 }
 
