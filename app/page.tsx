@@ -100,7 +100,7 @@ export default async function Home() {
             <img className="hero-icon" src="/icon.png" alt="Dash Desktop Wallet icon" width={112} height={112} />
             <h1>Dash Desktop Wallet</h1>
             <p className="lede">
-              Desktop wallet app supporting both layers of <a href="https://dash.org">Dash</a>Dash network. Core payments,
+              Desktop wallet app supporting both layers of <a href="https://dash.org">Dash</a> network. Core payments,
               Platform identities and shielded transactions in a single desktop app, built on one recovery phrase. Your
               keys never leave your computer.
             </p>
