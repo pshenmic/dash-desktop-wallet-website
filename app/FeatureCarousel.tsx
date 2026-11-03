@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, type CSSProperties } from 'react'
 
 type Item = { icon: string; text: string }
 
@@ -69,8 +69,6 @@ function bold(text: string) {
 
 export function FeatureCarousel() {
   const [active, setActive] = useState(0)
-  const slide = SLIDES[active]
-  const strips = SLIDES.map((s, i) => ({ ...s, i })).filter((s) => s.i !== active)
 
   return (
     <div>
@@ -95,39 +93,63 @@ export function FeatureCarousel() {
       </div>
 
       <div className="feature-row">
-        <div className="feature-active flex-1">
-          <div className={`relative z-10 p-8 ${slide.image ? 'lg:max-w-[56%]' : ''}`}>
-            <span className="pill-blue inline-block rounded-full px-3 py-1 text-xs font-semibold mb-4">
-              {slide.label}
-            </span>
-            <h3 className="text-[26px] font-bold tracking-[-0.02em] mb-7">{slide.title}</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-7">
-              {slide.items.map((item) => (
-                <div key={item.text} className="flex items-start gap-3">
-                  <span className="icon-square icon-square-sm">
-                    <img src={item.icon} alt="" aria-hidden />
-                  </span>
-                  <p className="text-[15px] leading-snug text-[color:var(--color-muted)]">
-                    {bold(item.text)}
-                  </p>
+        {SLIDES.map((slide, i) => {
+          const isActive = i === active
+          return (
+            <div
+              key={slide.title}
+              className={`feature-card-slot${isActive ? ' is-active' : ''}`}
+              style={{ '--slot-w': isActive ? 'calc(100% - 297px)' : '83px' } as CSSProperties}
+              role={isActive ? undefined : 'button'}
+              tabIndex={isActive ? -1 : 0}
+              aria-label={isActive ? undefined : `Open ${slide.title}`}
+              onClick={() => {
+                if (!isActive) setActive(i)
+              }}
+              onKeyDown={(e) => {
+                if (!isActive && (e.key === 'Enter' || e.key === ' ')) {
+                  e.preventDefault()
+                  setActive(i)
+                }
+              }}
+            >
+              {isActive ? (
+                <>
+                  <div className={`slot-body ${slide.image ? 'lg:max-w-[56%]' : ''}`}>
+                    <span className="pill-blue inline-block rounded-full px-3 py-1 text-xs font-semibold mb-4">
+                      {slide.label}
+                    </span>
+                    <h3 className="text-[26px] font-bold tracking-[-0.02em] mb-7">{slide.title}</h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-7">
+                      {slide.items.map((item) => (
+                        <div key={item.text} className="flex items-start gap-3">
+                          <span className="icon-square icon-square-sm">
+                            <img src={item.icon} alt="" aria-hidden />
+                          </span>
+                          <p className="text-[15px] leading-snug text-[color:var(--color-muted)]">
+                            {bold(item.text)}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  {slide.image && (
+                    <img
+                      className="feature-shot"
+                      src={slide.image}
+                      alt="Dash Desktop Wallet dashboard"
+                    />
+                  )}
+                </>
+              ) : (
+                <div className="slot-collapsed">
+                  <span className="strip-label pill-gray">{slide.label}</span>
+                  <span className="strip-title">{slide.title}</span>
                 </div>
-              ))}
+              )}
             </div>
-          </div>
-          {slide.image && <img className="feature-shot" src={slide.image} alt="Dash Desktop Wallet dashboard" />}
-        </div>
-
-        {strips.map((s) => (
-          <button
-            key={s.title}
-            className="feature-strip"
-            onClick={() => setActive(s.i)}
-            aria-label={`Show ${s.title}`}
-          >
-            <span className="strip-label pill-gray">{s.label}</span>
-            <span className="strip-title">{s.title}</span>
-          </button>
-        ))}
+          )
+        })}
       </div>
     </div>
   )
