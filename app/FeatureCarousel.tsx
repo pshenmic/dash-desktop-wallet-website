@@ -113,40 +113,36 @@ export function FeatureCarousel() {
                 }
               }}
             >
-              {isActive ? (
-                <>
-                  <div className={`slot-body ${slide.image ? 'lg:max-w-[56%]' : ''}`}>
-                    <span className="pill-blue inline-block rounded-full px-3 py-1 text-xs font-semibold mb-4">
-                      {slide.label}
-                    </span>
-                    <h3 className="text-[26px] font-bold tracking-[-0.02em] mb-7">{slide.title}</h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-7">
-                      {slide.items.map((item) => (
-                        <div key={item.text} className="flex items-start gap-3">
-                          <span className="icon-square icon-square-sm">
-                            <img src={item.icon} alt="" aria-hidden />
-                          </span>
-                          <p className="text-[15px] leading-snug text-[color:var(--color-muted)]">
-                            {bold(item.text)}
-                          </p>
-                        </div>
-                      ))}
+              <div className={`slot-body ${slide.image ? 'lg:max-w-[56%]' : ''}`} hidden={!isActive}>
+                <span className="pill-blue inline-block rounded-full px-3 py-1 text-xs font-semibold mb-4">
+                  {slide.label}
+                </span>
+                <h3 className="text-[26px] font-bold tracking-[-0.02em] mb-7">{slide.title}</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-7">
+                  {slide.items.map((item) => (
+                    <div key={item.text} className="flex items-start gap-3">
+                      <span className="icon-square icon-square-sm">
+                        <img src={item.icon} alt="" aria-hidden />
+                      </span>
+                      <p className="text-[15px] leading-snug text-[color:var(--color-muted)]">
+                        {bold(item.text)}
+                      </p>
                     </div>
-                  </div>
-                  {slide.image && (
-                    <img
-                      className="feature-shot"
-                      src={slide.image}
-                      alt="Dash Desktop Wallet dashboard"
-                    />
-                  )}
-                </>
-              ) : (
-                <div className="slot-collapsed">
-                  <span className="strip-label pill-gray">{slide.label}</span>
-                  <span className="strip-title">{slide.title}</span>
+                  ))}
                 </div>
+              </div>
+              {slide.image && (
+                <img
+                  className="feature-shot"
+                  src={slide.image}
+                  alt="Dash Desktop Wallet dashboard"
+                  hidden={!isActive}
+                />
               )}
+              <div className="slot-collapsed" hidden={isActive}>
+                <span className="strip-label pill-gray">{slide.label}</span>
+                <span className="strip-title">{slide.title}</span>
+              </div>
             </div>
           )
         })}

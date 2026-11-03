@@ -263,6 +263,12 @@ a {
   height: 100%;
 }
 
+.slot-body[hidden],
+.slot-collapsed[hidden],
+.feature-shot[hidden] {
+  display: none;
+}
+
 .feature-shot {
   display: none;
   position: absolute;
