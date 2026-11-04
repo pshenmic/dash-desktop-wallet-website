@@ -56,19 +56,19 @@ const INTRO_CARDS = [
 const SECURITY_CARDS = [
   {
     title: 'Non-custodial',
-    body: 'Keys are derived on your machine. Nobody else can move your funds.',
+    body: 'Private keys never leave your machine. Nobody else can move your funds.',
   },
   {
     title: 'Encrypted at rest',
-    body: 'Your recovery phrase is encrypted with AES-256-GCM using a key derived from your password with PBKDF2-SHA-512.',
+    body: 'Recovery seed phrase is encrypted with your password using strong cryptographic algorithms.',
   },
   {
-    title: 'Verified sync',
-    body: 'In P2P mode, headers are checked against difficulty rules and blocks against their merkle roots before anything is trusted.',
+    title: 'P2P and SPV',
+    body: 'With P2P mode your wallet data requests are done in the peer to peer network with Compact Filters that hides your wallet addresses from the others during sync.',
   },
   {
     title: 'No tracking',
-    body: 'No accounts, analytics, ads or crash reporting.',
+    body: 'No accounts, analytics, ads or crash reporting by default.',
   },
 ]
 
@@ -179,15 +179,17 @@ export default async function Home() {
 
       <main id="top">
         {/* Hero */}
-        <section className="pt-16 pb-16 lg:pb-24">
-          <div className="max-w-[1344px] mx-auto px-12 grid lg:grid-cols-2 gap-10 items-start">
-            <div className="lg:pt-[68px]">
+        <section className="pt-16 pb-16 lg:pt-24 lg:pb-20">
+          <div className="max-w-[1344px] mx-auto px-12 grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <div className="text-sm font-medium text-[color:var(--color-muted)] mb-3">
+                Your Dash. Your Wallet
+              </div>
               <Heading as="h1" size="3xl" className="text-[52px] leading-[1.03] font-extrabold tracking-[-0.03em]">
                 Dash Desktop Wallet
               </Heading>
               <Text size="lg" className="mt-5 max-w-[520px] text-[color:var(--color-muted)]">
-                Core payments, Platform identities and shielded transactions in a single desktop app,
-                built on one recovery phrase. Your keys never leave your computer.
+                Your gateway to the Dash network. Instant payments, private transactions and DashPay - all private by design.
               </Text>
 
               <div className="flex flex-wrap gap-3 mt-8">
