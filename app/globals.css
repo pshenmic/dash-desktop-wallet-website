@@ -109,7 +109,7 @@ a {
   position: sticky;
   top: 16px;
   z-index: 30;
-  margin: 16px auto 0;
+  margin: 24px auto 0;
   max-width: 1344px;
   width: calc(100% - 48px);
   background: var(--color-surface);
@@ -117,13 +117,26 @@ a {
   box-shadow: 0 6px 30px rgba(12, 28, 51, 0.06);
 }
 
+@media (min-width: 768px) {
+  .nav {
+    margin-top: 48px;
+  }
+}
+
 .nav-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  height: 64px;
-  padding: 0 20px 0 24px;
+  height: 56px;
+  padding: 0 24px;
+}
+
+@media (min-width: 768px) {
+  .nav-inner {
+    height: 54px;
+    padding: 0 32px;
+  }
 }
 
 .nav-links {
