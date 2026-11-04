@@ -342,8 +342,6 @@ a {
   border-radius: var(--radius-card);
   background: var(--color-surface);
   padding: 32px;
-  break-inside: avoid;
-  margin-bottom: 16px;
 }
 
 .security-masonry {
@@ -355,12 +353,13 @@ a {
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
-  align-items: start;
+  align-items: stretch;
 }
 
 @media (min-width: 640px) {
   .security-cols {
     grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1fr;
   }
 }
 

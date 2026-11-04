@@ -53,21 +53,18 @@ const INTRO_CARDS = [
   },
 ]
 
-const SECURITY_LEFT = [
+const SECURITY_CARDS = [
   {
     title: 'Non-custodial',
     body: 'Keys are derived on your machine. Nobody else can move your funds.',
   },
   {
-    title: 'Verified sync',
-    body: 'In P2P mode, headers are checked against difficulty rules and blocks against their merkle roots before anything is trusted.',
-  },
-]
-
-const SECURITY_RIGHT = [
-  {
     title: 'Encrypted at rest',
     body: 'Your recovery phrase is encrypted with AES-256-GCM using a key derived from your password with PBKDF2-SHA-512.',
+  },
+  {
+    title: 'Verified sync',
+    body: 'In P2P mode, headers are checked against difficulty rules and blocks against their merkle roots before anything is trusted.',
   },
   {
     title: 'No tracking',
@@ -182,12 +179,9 @@ export default async function Home() {
 
       <main id="top">
         {/* Hero */}
-        <section className="pt-16 pb-16 lg:pt-24 lg:pb-20">
-          <div className="max-w-[1344px] mx-auto px-12 grid lg:grid-cols-2 gap-10 items-center">
-            <div>
-              <div className="text-sm font-medium text-[color:var(--color-muted)] mb-3">
-                Your Dash. Your Wallet
-              </div>
+        <section className="pt-16 pb-16 lg:pb-24">
+          <div className="max-w-[1344px] mx-auto px-12 grid lg:grid-cols-2 gap-10 items-start">
+            <div className="lg:pt-[68px]">
               <Heading as="h1" size="3xl" className="text-[52px] leading-[1.03] font-extrabold tracking-[-0.03em]">
                 Dash Desktop Wallet
               </Heading>
@@ -201,24 +195,24 @@ export default async function Home() {
                   {primary && platform ? `Download for ${PLATFORM_NAMES[platform]}` : 'Download'}
                 </a>
                 <a className="btn-ghost" href="#download">
-                  All Platforms
+                  Other Platforms
                 </a>
               </div>
 
-              <Text size="sm" className="mt-5 text-[color:var(--color-muted)]">
+              <p className="mt-3 text-[14px] font-medium tracking-[-0.03em] text-[color:var(--color-muted)]">
                 {primary && release
                   ? `${release.tag}${release.prerelease ? ' (pre-release)' : ''} · ${primary.label} · ${formatSize(primary.size)}`
                   : release
                     ? `${release.tag}${release.prerelease ? ' (pre-release)' : ''} · macOS · Windows · Linux`
                     : 'macOS · Windows · Linux · Free and open source (MIT)'}
-              </Text>
+              </p>
             </div>
 
             <div className="relative">
               <img
                 src="/figma/hero-art.png"
                 alt="Dash Desktop Wallet dashboard"
-                className="w-full max-w-[620px] mx-auto lg:ml-auto"
+                className="w-full max-w-[525px] mx-auto lg:ml-auto"
               />
             </div>
           </div>
@@ -260,30 +254,16 @@ export default async function Home() {
               </Heading>
 
               <div className="security-cols">
-                <div className="flex flex-col gap-4">
-                  {SECURITY_LEFT.map((card) => (
-                    <div key={card.title} className="security-card">
-                      <Heading as="h4" size="lg" className="text-lg font-semibold mb-3">
-                        {card.title}
-                      </Heading>
-                      <Text className="text-[15px] leading-relaxed text-[color:var(--color-muted)]">
-                        {card.body}
-                      </Text>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex flex-col gap-4">
-                  {SECURITY_RIGHT.map((card) => (
-                    <div key={card.title} className="security-card">
-                      <Heading as="h4" size="lg" className="text-lg font-semibold mb-3">
-                        {card.title}
-                      </Heading>
-                      <Text className="text-[15px] leading-relaxed text-[color:var(--color-muted)]">
-                        {card.body}
-                      </Text>
-                    </div>
-                  ))}
-                </div>
+                {SECURITY_CARDS.map((card) => (
+                  <div key={card.title} className="security-card flex flex-col">
+                    <Heading as="h4" size="lg" className="text-lg font-semibold mb-3">
+                      {card.title}
+                    </Heading>
+                    <Text className="text-[15px] leading-relaxed text-[color:var(--color-muted)]">
+                      {card.body}
+                    </Text>
+                  </div>
+                ))}
               </div>
             </div>
 
