@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Manrope } from 'next/font/google'
 import type { ReactNode } from 'react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Providers } from './Providers'
 import './globals.css'
 
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" className={manrope.variable}>
       <body>
         <Providers>{children}</Providers>
+        <SpeedInsights />
       </body>
     </html>
   )
