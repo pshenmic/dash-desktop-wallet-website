@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, type CSSProperties } from 'react'
+import { track } from '@vercel/analytics'
 
 type Item = { icon: string; text: string }
 
@@ -104,12 +105,16 @@ export function FeatureCarousel() {
               tabIndex={isActive ? -1 : 0}
               aria-label={isActive ? undefined : `Open ${slide.title}`}
               onClick={() => {
-                if (!isActive) setActive(i)
+                if (!isActive) {
+                  setActive(i)
+                  track('feature_card_click', { slide: slide.title, via: 'card' })
+                }
               }}
               onKeyDown={(e) => {
                 if (!isActive && (e.key === 'Enter' || e.key === ' ')) {
                   e.preventDefault()
                   setActive(i)
+                  track('feature_card_click', { slide: slide.title, via: 'keyboard' })
                 }
               }}
             >

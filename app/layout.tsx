@@ -3,6 +3,7 @@ import { Manrope } from 'next/font/google'
 import type { ReactNode } from 'react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Analytics } from '@vercel/analytics/next'
+import { AnalyticsEvents } from './AnalyticsEvents'
 import { Providers } from './Providers'
 import './globals.css'
 
@@ -41,6 +42,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" className={manrope.variable}>
       <body>
         <Providers>{children}</Providers>
+        <AnalyticsEvents />
         <Analytics />
         <SpeedInsights />
       </body>

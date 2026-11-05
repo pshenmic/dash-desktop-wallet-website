@@ -121,12 +121,25 @@ function AssetList({ platform, downloads }: { platform: Platform; downloads: Dow
   return (
     <div className={platform === 'linux' ? 'grid grid-cols-2 gap-2' : 'flex flex-col gap-2'}>
       {items.length === 0 ? (
-        <a href={LATEST_URL} className="download-asset">
+        <a
+          href={LATEST_URL}
+          className="download-asset"
+          data-event="download_click"
+          data-event-payload={JSON.stringify({ source: 'card', platform, label: 'latest' })}
+        >
           <span className="text-[15px]">Download</span>
         </a>
       ) : (
         items.map((d) => (
-          <a key={d.name} href={d.url} className="download-asset" target="_blank" rel="noopener">
+          <a
+            key={d.name}
+            href={d.url}
+            className="download-asset"
+            target="_blank"
+            rel="noopener"
+            data-event="download_click"
+            data-event-payload={JSON.stringify({ source: 'card', platform, arch: d.arch, label: d.label })}
+          >
             <span className="text-[15px]">{d.label}</span>
             <span className="text-[13px] font-normal text-[color:var(--color-muted)]">
               {ARCH_NAMES[d.arch]} · {formatSize(d.size)}
@@ -170,6 +183,8 @@ export default async function Home() {
                   key={link.href}
                   href={link.href}
                   aria-current={link.href === '#top' ? 'page' : undefined}
+                  data-event="nav_click"
+                  data-event-payload={JSON.stringify({ label: link.label, href: link.href })}
                   {...(link.href.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {})}
                 >
                   {link.label}
@@ -193,10 +208,19 @@ export default async function Home() {
               </p>
 
               <div className="flex flex-wrap gap-3 mt-8">
-                <a className="btn-brand" href={primary?.url ?? LATEST_URL}>
+                <a
+                  className="btn-brand"
+                  href={primary?.url ?? LATEST_URL}
+                  data-event="download_click"
+                  data-event-payload={JSON.stringify({
+                    source: 'hero',
+                    platform: platform ?? 'unknown',
+                    label: primary?.label ?? 'latest',
+                  })}
+                >
                   {primary && platform ? `Download for ${PLATFORM_NAMES[platform]}` : 'Download'}
                 </a>
-                <a className="btn-ghost" href="#download">
+                <a className="btn-ghost" href="#download" data-event="other_platforms_click">
                   Other platforms
                 </a>
               </div>
@@ -292,7 +316,12 @@ export default async function Home() {
                     </span>
                   )}
                   <span>released {formatDate(release.publishedAt)}</span>
-                  <a href={release.url} className="text-[color:var(--color-brand)]">
+                  <a
+                    href={release.url}
+                    className="text-[color:var(--color-brand)]"
+                    data-event="outbound_click"
+                    data-event-payload={JSON.stringify({ label: 'Release notes', url: release.url, placement: 'download-meta' })}
+                  >
                     Release notes
                   </a>
                 </>
@@ -382,11 +411,25 @@ export default async function Home() {
 
             <p className="mt-10 text-[18px] font-medium text-[color:var(--color-muted)] text-center">
               Looking for an older version or a pre-release? See{' '}
-              <a href={RELEASES_URL} className="text-[color:var(--color-brand)]">
+              <a
+                href={RELEASES_URL}
+                className="text-[color:var(--color-brand)]"
+                data-event="outbound_click"
+                data-event-payload={JSON.stringify({ label: 'all releases', url: RELEASES_URL, placement: 'download-footnote' })}
+              >
                 all releases
               </a>
               . Prefer to build it yourself? Follow the{' '}
-              <a href={`${REPO_URL}#build-from-source`} className="text-[color:var(--color-brand)]">
+              <a
+                href={`${REPO_URL}#build-from-source`}
+                className="text-[color:var(--color-brand)]"
+                data-event="outbound_click"
+                data-event-payload={JSON.stringify({
+                  label: 'build instructions',
+                  url: `${REPO_URL}#build-from-source`,
+                  placement: 'download-footnote',
+                })}
+              >
                 build instructions
               </a>
               .
