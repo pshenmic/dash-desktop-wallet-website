@@ -1,6 +1,7 @@
 import { headers } from 'next/headers'
 import { Badge, Accordion, DashLogo } from 'dash-ui-kit/react'
 import { FeatureCarousel } from './FeatureCarousel'
+import { PLATFORM_ICONS } from './platform-icons'
 import {
   ARCH_NAMES,
   LATEST_URL,
@@ -112,12 +113,6 @@ const PLATFORM_NOTES: Record<Platform, string> = {
   mac: 'Universal build for Apple silicon and Intel. Signed and notarized.',
   windows: '64-bit installer for Windows 10 and 11.',
   linux: 'AppImage for x64 and arm64.',
-}
-
-const PLATFORM_ICONS: Record<Platform, string> = {
-  mac: '/figma/icon-apple.svg',
-  windows: '/figma/icon-windows.svg',
-  linux: '/figma/icon-linux.svg',
 }
 
 function AssetList({ platform, downloads }: { platform: Platform; downloads: Download[] }) {
@@ -316,7 +311,7 @@ export default async function Home() {
                 <div key={p} className={`download-card${p === platform ? ' is-current' : ''}`}>
                   <div className="flex items-center gap-3 mb-4">
                     <span className="icon-square">
-                      <img src={PLATFORM_ICONS[p]} alt="" aria-hidden />
+                      {PLATFORM_ICONS[p]}
                     </span>
                     <h3 className="text-[24px] font-semibold tracking-[-0.03em]">
                       {PLATFORM_NAMES[p]}

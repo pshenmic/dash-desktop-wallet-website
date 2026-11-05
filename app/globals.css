@@ -179,7 +179,8 @@ a {
   background: var(--color-brand);
 }
 
-.icon-square img {
+.icon-square img,
+.icon-square svg {
   width: 26px;
   height: 26px;
   object-fit: contain;
