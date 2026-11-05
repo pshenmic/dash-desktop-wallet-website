@@ -36,7 +36,7 @@ const NAV_LINKS = [
   { label: 'Features', href: '#features' },
   { label: 'Download', href: '#download' },
   { label: 'Support', href: '#faq' },
-  { label: 'GitHub', href: REPO_URL },
+  { label: 'Github', href: REPO_URL },
 ]
 
 const INTRO_CARDS = [
@@ -171,7 +171,12 @@ export default async function Home() {
             </a>
             <nav className="nav-links">
               {NAV_LINKS.map((link) => (
-                <a key={link.href} href={link.href} aria-current={link.href === '#top' ? 'page' : undefined}>
+                <a
+                  key={link.href}
+                  href={link.href}
+                  aria-current={link.href === '#top' ? 'page' : undefined}
+                  {...(link.href.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {})}
+                >
                   {link.label}
                 </a>
               ))}
@@ -422,7 +427,12 @@ export default async function Home() {
             </a>
             <nav className="flex flex-wrap items-center gap-7 text-sm">
               {NAV_LINKS.map((link) => (
-                <a key={link.href} href={link.href} className="font-semibold text-[color:var(--color-muted)] hover:text-[color:var(--color-text)]">
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="font-semibold text-[color:var(--color-muted)] hover:text-[color:var(--color-text)]"
+                  {...(link.href.startsWith('https') ? { target: '_blank', rel: 'noopener' } : {})}
+                >
                   {link.label}
                 </a>
               ))}
