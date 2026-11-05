@@ -111,9 +111,9 @@ a {
   position: sticky;
   top: 16px;
   z-index: 30;
-  margin: 24px auto 0;
-  max-width: 1344px;
-  width: calc(100% - 48px);
+  margin: 24px 0 0 24px;
+  width: fit-content;
+  max-width: calc(100% - 48px);
   background: var(--color-surface);
   border-radius: 999px;
   box-shadow: 0 6px 30px rgba(12, 28, 51, 0.06);
@@ -121,15 +121,13 @@ a {
 
 @media (min-width: 768px) {
   .nav {
-    margin-top: 48px;
+    margin: 48px 0 0 48px;
   }
 }
 
 .nav-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
   height: 56px;
   padding: 0 24px;
 }
@@ -149,19 +147,24 @@ a {
   .nav-links {
     display: flex;
     align-items: center;
-    gap: 28px;
+    gap: 48px;
   }
 }
 
 .nav-links a {
-  color: var(--color-muted);
+  color: var(--color-text);
   font-size: 14px;
   font-weight: 600;
+  line-height: 19px;
   transition: color 0.15s;
 }
 
+.nav-links a[aria-current='page'] {
+  color: var(--color-brand);
+}
+
 .nav-links a:hover {
-  color: var(--color-text);
+  color: var(--color-brand);
 }
 
 /* ---------- Icon helpers ---------- */

@@ -1,5 +1,5 @@
 import { headers } from 'next/headers'
-import { Badge, Accordion, DashLogo, CopyButton } from 'dash-ui-kit/react'
+import { Badge, Accordion, DashLogo } from 'dash-ui-kit/react'
 import { FeatureCarousel } from './FeatureCarousel'
 import {
   ARCH_NAMES,
@@ -17,6 +17,7 @@ import {
   type Platform,
 } from '@/lib/releases'
 
+/* APT repo card temporarily hidden (2026-11-06) — uncomment together with its JSX in the Download section
 const APT_COMMANDS = `curl -fsSL https://pshenmic.github.io/dash-desktop/key.asc \\
   | sudo gpg --dearmor -o /usr/share/keyrings/dash-desktop.gpg
 
@@ -24,15 +25,18 @@ echo "deb [signed-by=/usr/share/keyrings/dash-desktop.gpg] https://pshenmic.gith
   | sudo tee /etc/apt/sources.list.d/dash-desktop.list
 
 sudo apt update && sudo apt install dash-desktop`
+*/
 
+/* Snap card temporarily hidden (2026-11-06) — uncomment together with its JSX in the Download section
 const SNAP_COMMAND = 'sudo snap install dash-desktop-wallet'
+*/
 
 const NAV_LINKS = [
   { label: 'Home', href: '#top' },
   { label: 'Features', href: '#features' },
   { label: 'Download', href: '#download' },
   { label: 'Support', href: '#faq' },
-  { label: 'Developers', href: REPO_URL },
+  { label: 'GitHub', href: REPO_URL },
 ]
 
 const INTRO_CARDS = [
@@ -107,7 +111,7 @@ const FAQ_ITEMS = [
 const PLATFORM_NOTES: Record<Platform, string> = {
   mac: 'Universal build for Apple silicon and Intel. Signed and notarized.',
   windows: '64-bit installer for Windows 10 and 11.',
-  linux: 'AppImage, .deb and Snap for x64 and arm64.',
+  linux: 'AppImage for x64 and arm64.',
 }
 
 const PLATFORM_ICONS: Record<Platform, string> = {
@@ -147,7 +151,8 @@ export default async function Home() {
   )
 
   const release = await getLatestRelease()
-  const downloads = release?.downloads ?? []
+  // .deb and .snap packages temporarily hidden (2026-11-06) together with the APT and Snap cards
+  const downloads = (release?.downloads ?? []).filter((d) => d.kind !== 'deb' && d.kind !== 'snap')
   const primary = platform ? pickPrimary(downloads, platform, arch) : null
 
   return (
@@ -158,22 +163,20 @@ export default async function Home() {
             <a href="#top" className="flex items-center gap-2 text-[color:var(--color-text)]">
               <DashLogo width={30} height={24} />
               <span className="text-[12px] font-extrabold leading-none tracking-[-0.03em]">
-                Dash Desktop
+                Dash
+                Desktop
                 <br />
                 Wallet
               </span>
             </a>
             <nav className="nav-links">
               {NAV_LINKS.map((link) => (
-                <a key={link.href} href={link.href}>
+                <a key={link.href} href={link.href} aria-current={link.href === '#top' ? 'page' : undefined}>
                   {link.label}
                 </a>
               ))}
             </nav>
           </div>
-          <a className="btn-brand btn-sm" href={primary?.url ?? '#download'}>
-            Download
-          </a>
         </div>
       </header>
 
@@ -183,7 +186,7 @@ export default async function Home() {
           <div className="max-w-[1344px] mx-auto px-12 grid lg:grid-cols-2 gap-10 items-start">
             <div className="lg:pt-[68px]">
               <h1 className="text-[48px] leading-none font-medium tracking-[-0.03em] text-[color:var(--color-text)]">
-                Dash <strong className="font-bold">Desktop Wallet</strong>
+                <strong className="font-bold">Dash Desktop Wallet</strong>
               </h1>
               <p className="mt-5 max-w-[520px] text-[20px] font-medium leading-relaxed tracking-[-0.03em] text-[color:var(--color-muted)]">
                 Your gateway to the Dash network. Instant payments, private transactions and DashPay - all private by design.
@@ -194,7 +197,7 @@ export default async function Home() {
                   {primary && platform ? `Download for ${PLATFORM_NAMES[platform]}` : 'Download'}
                 </a>
                 <a className="btn-ghost" href="#download">
-                  Other Platforms
+                  Other platforms
                 </a>
               </div>
 
@@ -275,21 +278,20 @@ export default async function Home() {
         {/* Download */}
         <section id="download" className="py-16">
           <div className="max-w-[1344px] mx-auto px-12">
-            <h2 className="text-[32px] font-semibold tracking-[-0.03em] mb-3">
+            <h2 className="text-[32px] font-semibold tracking-[-0.03em] mb-1">
               Download
             </h2>
 
-            <div className="flex flex-wrap items-center gap-3 mb-8 text-[14px] text-[color:var(--color-muted)]">
+            <div className="flex flex-wrap items-center gap-3 mb-8 text-[18px] font-medium tracking-[-0.03em] text-[color:var(--color-muted)]">
               {release ? (
                 <>
-                  <span className="text-[color:var(--color-text)] font-semibold">{release.tag}</span>
+                  <span>{release.tag}</span>
                   {release.prerelease && (
-                    <Badge color="orange" className="text-xs">
+                    <span className="rounded-full px-4 py-2 text-[14px] font-semibold tracking-normal text-[#FF8B4C] bg-[rgba(255,139,76,0.12)]">
                       Pre-release
-                    </Badge>
+                    </span>
                   )}
                   <span>released {formatDate(release.publishedAt)}</span>
-                  <span>·</span>
                   <a href={release.url} className="text-[color:var(--color-brand)]">
                     Release notes
                   </a>
@@ -334,6 +336,7 @@ export default async function Home() {
               ))}
             </div>
 
+            {/* APT repo card temporarily hidden (2026-11-06) — restore it and the lg:grid-cols-[1.1fr_1fr] wrapper together
             <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-4 mt-4">
               <div className="download-card min-w-0">
                 <h4 className="text-[20px] font-semibold tracking-[-0.03em] mb-2">
@@ -352,7 +355,10 @@ export default async function Home() {
                   </pre>
                 </div>
               </div>
+            */}
 
+            {/* Snap card temporarily hidden (2026-11-06) — restore it with the APT card above into one lg:grid-cols-[1.1fr_1fr] wrapper, and re-add the CopyButton import
+            <div className="grid grid-cols-1 gap-4 mt-4">
               <div className="download-card min-w-0">
                 <h4 className="text-[20px] font-semibold tracking-[-0.03em] mb-2">
                   Snap
@@ -372,6 +378,7 @@ export default async function Home() {
                 </div>
               </div>
             </div>
+            */}
 
             <p className="mt-10 text-[18px] font-medium text-[color:var(--color-muted)] text-center">
               Looking for an older version or a pre-release? See{' '}
