@@ -1,5 +1,5 @@
 import { headers } from 'next/headers'
-import { Heading, Text, Badge, Accordion, DashLogo, CopyButton } from 'dash-ui-kit/react'
+import { Badge, Accordion, DashLogo, CopyButton } from 'dash-ui-kit/react'
 import { FeatureCarousel } from './FeatureCarousel'
 import {
   ARCH_NAMES,
@@ -79,23 +79,23 @@ const FAQ_ITEMS = [
       'Dash Desktop Wallet is a non-custodial desktop application for the Dash network. It supports both Layer 1 (core payments) and Layer 2 (Dash Platform identities, DPNS, and credits), plus shielded Orchard transactions — all from a single recovery phrase.',
   },
   {
-    question: 'Is Dash Desktop free to use?',
+    question: 'Is Dash Desktop open source?',
     answer:
       'Yes, Dash Desktop Wallet is free and open source (MIT license). There are no fees for the wallet itself — only standard Dash network transaction fees apply.',
   },
   {
-    question: 'Can I use Dash Platform with Dash Desktop?',
+    question: 'Can I use Dash Platform (Dash Evolution) with Dash Desktop?',
     answer:
-      'Yes. You can register identities, top up and transfer Platform credits, resolve DPNS names, and withdraw credits back to L1 — all from within the wallet.',
+      'Yes. You can register identities, usernames, top up and transfer Platform credits and withdraw credits back to L1 — all from within the wallet.',
   },
   {
     question: 'Does it support shielded transactions?',
     answer:
-      'Yes. Dash Desktop supports the Orchard shielded pool. You can shield funds, send privately between shielded addresses, and unshield back to transparent addresses.',
+      'Yes. Dash Desktop Wallet support private transactions in the Dash Evolution (L2) network. You can easily shield your funds and send privately between shielded addresses, and unshield back to regular Dash addresses.',
   },
   {
     question: 'Where can I get help or report a bug?',
-    answer: 'Visit the GitHub issues page or the Dash community forums. Links are available in the footer.',
+    answer: 'You can submit a the GitHub issue or reach out to the Dash community forums. We\'re generally available in the Dash Discord.',
   },
   {
     question: 'Is Dash Desktop a non-custodial wallet?',
@@ -154,11 +154,11 @@ export default async function Home() {
     <>
       <header className="nav">
         <div className="nav-inner">
-          <div className="flex items-center gap-8">
-            <a href="#top" className="flex items-center gap-2.5 text-[color:var(--color-text)]">
-              <DashLogo width={28} height={28} />
-              <span className="text-[13px] font-semibold leading-tight">
-                Desktop
+          <div className="flex items-center gap-24">
+            <a href="#top" className="flex items-center gap-2 text-[color:var(--color-text)]">
+              <DashLogo width={30} height={24} />
+              <span className="text-[12px] font-extrabold leading-none tracking-[-0.03em]">
+                Dash Desktop
                 <br />
                 Wallet
               </span>
@@ -179,18 +179,15 @@ export default async function Home() {
 
       <main id="top">
         {/* Hero */}
-        <section className="pt-16 pb-16 lg:pt-24 lg:pb-20">
-          <div className="max-w-[1344px] mx-auto px-12 grid lg:grid-cols-2 gap-10 items-center">
-            <div>
-              <div className="text-sm font-medium text-[color:var(--color-muted)] mb-3">
-                Your Dash. Your Wallet
-              </div>
-              <Heading as="h1" size="3xl" className="text-[52px] leading-[1.03] font-extrabold tracking-[-0.03em]">
-                Dash Desktop Wallet
-              </Heading>
-              <Text size="lg" className="mt-5 max-w-[520px] text-[color:var(--color-muted)]">
+        <section className="pt-16 pb-16 lg:pb-24">
+          <div className="max-w-[1344px] mx-auto px-12 grid lg:grid-cols-2 gap-10 items-start">
+            <div className="lg:pt-[68px]">
+              <h1 className="text-[48px] leading-none font-medium tracking-[-0.03em] text-[color:var(--color-text)]">
+                Dash <strong className="font-bold">Desktop Wallet</strong>
+              </h1>
+              <p className="mt-5 max-w-[520px] text-[20px] font-medium leading-relaxed tracking-[-0.03em] text-[color:var(--color-muted)]">
                 Your gateway to the Dash network. Instant payments, private transactions and DashPay - all private by design.
-              </Text>
+              </p>
 
               <div className="flex flex-wrap gap-3 mt-8">
                 <a className="btn-brand" href={primary?.url ?? LATEST_URL}>
@@ -228,12 +225,12 @@ export default async function Home() {
                 <span className="icon-square mb-6">
                   <img src={card.icon} alt="" aria-hidden />
                 </span>
-                <Heading as="h3" size="lg" className="text-xl font-semibold mb-2">
+                <h3 className="text-[20px] font-semibold tracking-[-0.03em] mb-2">
                   {card.title}
-                </Heading>
-                <Text className="text-[15px] leading-relaxed text-[color:var(--color-muted)]">
+                </h3>
+                <p className="text-[18px] font-medium leading-relaxed text-[color:var(--color-muted)]">
                   {card.body}
-                </Text>
+                </p>
               </div>
             ))}
           </div>
@@ -251,19 +248,19 @@ export default async function Home() {
           <div className="max-w-[1344px] mx-auto px-12 grid lg:grid-cols-2 gap-10 items-start">
             <div>
               <div className="eyebrow">Most Important</div>
-              <Heading as="h2" size="2xl" className="text-[32px] font-semibold tracking-[-0.02em] mb-8">
+              <h2 className="text-[32px] font-semibold tracking-[-0.03em] mb-8">
                 Security &amp; Privacy
-              </Heading>
+              </h2>
 
               <div className="security-cols">
                 {SECURITY_CARDS.map((card) => (
                   <div key={card.title} className="security-card flex flex-col">
-                    <Heading as="h4" size="lg" className="text-lg font-semibold mb-3">
+                    <h4 className="text-[20px] font-semibold tracking-[-0.03em] mb-3">
                       {card.title}
-                    </Heading>
-                    <Text className="text-[15px] leading-relaxed text-[color:var(--color-muted)]">
+                    </h4>
+                    <p className="text-[18px] font-medium leading-relaxed text-[color:var(--color-muted)]">
                       {card.body}
-                    </Text>
+                    </p>
                   </div>
                 ))}
               </div>
@@ -278,9 +275,9 @@ export default async function Home() {
         {/* Download */}
         <section id="download" className="py-16">
           <div className="max-w-[1344px] mx-auto px-12">
-            <Heading as="h2" size="2xl" className="text-[32px] font-semibold tracking-[-0.02em] mb-3">
+            <h2 className="text-[32px] font-semibold tracking-[-0.03em] mb-3">
               Download
-            </Heading>
+            </h2>
 
             <div className="flex flex-wrap items-center gap-3 mb-8 text-[14px] text-[color:var(--color-muted)]">
               {release ? (
@@ -314,24 +311,24 @@ export default async function Home() {
                     <span className="icon-square">
                       <img src={PLATFORM_ICONS[p]} alt="" aria-hidden />
                     </span>
-                    <Heading as="h3" size="xl" className="text-2xl font-semibold">
+                    <h3 className="text-[24px] font-semibold tracking-[-0.03em]">
                       {PLATFORM_NAMES[p]}
-                    </Heading>
+                    </h3>
                     {p === platform && (
                       <Badge color="blue" className="text-xs">
                         Your Platform
                       </Badge>
                     )}
                   </div>
-                  <Text className="text-[15px] text-[color:var(--color-muted)] mb-5">
+                  <p className="text-[18px] font-medium text-[color:var(--color-muted)] mb-5">
                     {PLATFORM_NOTES[p]}
-                  </Text>
+                  </p>
                   <AssetList platform={p} downloads={downloads} />
                   {p === 'windows' && (
-                    <Text size="sm" className="mt-4 text-[color:var(--color-muted)]">
+                    <p className="mt-4 text-[14px] font-medium text-[color:var(--color-muted)]">
                       The installer is not code-signed yet. SmartScreen may warn — choose{' '}
                       <em>More info → Run anyway</em>.
-                    </Text>
+                    </p>
                   )}
                 </div>
               ))}
@@ -339,15 +336,15 @@ export default async function Home() {
 
             <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-4 mt-4">
               <div className="download-card min-w-0">
-                <Heading as="h4" size="lg" className="text-xl font-semibold mb-2">
+                <h4 className="text-[20px] font-semibold tracking-[-0.03em] mb-2">
                   Debian / Ubuntu: APT repository{' '}
                   <Badge color="blue" className="text-xs align-middle">
                     Recommended
                   </Badge>
-                </Heading>
-                <Text className="text-[15px] text-[color:var(--color-muted)] mb-4">
+                </h4>
+                <p className="text-[18px] font-medium text-[color:var(--color-muted)] mb-4">
                   Signed, and updates with the rest of your system.
-                </Text>
+                </p>
                 <div className="code-block">
                   <CopyButton text={APT_COMMANDS} />
                   <pre>
@@ -357,16 +354,16 @@ export default async function Home() {
               </div>
 
               <div className="download-card min-w-0">
-                <Heading as="h4" size="lg" className="text-xl font-semibold mb-2">
+                <h4 className="text-[20px] font-semibold tracking-[-0.03em] mb-2">
                   Snap
-                </Heading>
-                <Text className="text-[15px] text-[color:var(--color-muted)] mb-4">
+                </h4>
+                <p className="text-[18px] font-medium text-[color:var(--color-muted)] mb-4">
                   Available on the{' '}
                   <a href="https://snapcraft.io/dash-desktop-wallet" className="text-[color:var(--color-brand)]">
                     Snap Store
                   </a>
                   .
-                </Text>
+                </p>
                 <div className="code-block">
                   <CopyButton text={SNAP_COMMAND} />
                   <pre>
@@ -376,7 +373,7 @@ export default async function Home() {
               </div>
             </div>
 
-            <Text size="sm" className="mt-10 text-[color:var(--color-muted)] text-center">
+            <p className="mt-10 text-[18px] font-medium text-[color:var(--color-muted)] text-center">
               Looking for an older version or a pre-release? See{' '}
               <a href={RELEASES_URL} className="text-[color:var(--color-brand)]">
                 all releases
@@ -386,7 +383,7 @@ export default async function Home() {
                 build instructions
               </a>
               .
-            </Text>
+            </p>
           </div>
         </section>
 
@@ -394,14 +391,14 @@ export default async function Home() {
         <section id="faq" className="py-16">
           <div className="max-w-[1344px] mx-auto px-12">
             <div className="eyebrow">Help &amp; FAQ</div>
-            <Heading as="h2" size="2xl" className="text-[32px] font-semibold tracking-[-0.02em] mb-8">
+            <h2 className="text-[32px] font-semibold tracking-[-0.03em] mb-8">
               We Believe in Security and Privacy
-            </Heading>
+            </h2>
 
             <div className="grid md:grid-cols-2 gap-4 items-start">
               {FAQ_ITEMS.map((item) => (
-                <Accordion key={item.question} title={item.question}>
-                  <Text className="text-[color:var(--color-muted)] leading-relaxed">{item.answer}</Text>
+                <Accordion key={item.question} title={item.question} className="faq-item">
+                  <p className="text-[18px] font-medium leading-relaxed text-[color:var(--color-muted)]">{item.answer}</p>
                 </Accordion>
               ))}
             </div>
@@ -418,24 +415,15 @@ export default async function Home() {
             </a>
             <nav className="flex flex-wrap items-center gap-7 text-sm">
               {NAV_LINKS.map((link) => (
-                <a key={link.href} href={link.href} className="text-[color:var(--color-muted)] hover:text-[color:var(--color-text)]">
+                <a key={link.href} href={link.href} className="font-semibold text-[color:var(--color-muted)] hover:text-[color:var(--color-text)]">
                   {link.label}
                 </a>
               ))}
             </nav>
           </div>
 
-          <div className="flex flex-wrap items-center justify-between gap-3 px-2 mt-4 text-[13px] text-[color:var(--color-muted)]">
+          <div className="px-2 mt-4 text-[13px] text-[color:var(--color-muted)]">
             <span>©2026 Dash Desktop Wallet</span>
-            <span className="flex items-center gap-3">
-              <a href="#" className="hover:text-[color:var(--color-text)]">
-                Terms
-              </a>
-              <span aria-hidden>•</span>
-              <a href={`${REPO_URL}/blob/master/PRIVACY.md`} className="hover:text-[color:var(--color-text)]">
-                Privacy
-              </a>
-            </span>
           </div>
         </div>
       </footer>

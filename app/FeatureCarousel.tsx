@@ -75,7 +75,7 @@ export function FeatureCarousel() {
       <div className="flex items-end justify-between gap-4 mb-6">
         <div>
           <div className="eyebrow">Features</div>
-          <h2 className="text-[32px] font-semibold tracking-[-0.02em] leading-tight">
+          <h2 className="text-[32px] font-semibold tracking-[-0.03em] leading-tight">
             Two Layers. One Dash Desktop
           </h2>
         </div>
@@ -117,14 +117,14 @@ export function FeatureCarousel() {
                 <span className="pill-blue inline-block rounded-full px-3 py-1 text-xs font-semibold mb-4">
                   {slide.label}
                 </span>
-                <h3 className="text-[26px] font-bold tracking-[-0.02em] mb-7">{slide.title}</h3>
+                <h3 className="text-[32px] font-semibold tracking-[-0.03em] mb-7">{slide.title}</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-7">
                   {slide.items.map((item) => (
                     <div key={item.text} className="flex items-start gap-3">
                       <span className="icon-square icon-square-sm">
                         <img src={item.icon} alt="" aria-hidden />
                       </span>
-                      <p className="text-[15px] leading-snug text-[color:var(--color-muted)]">
+                      <p className="text-[18px] font-medium leading-snug text-[color:var(--color-muted)]">
                         {bold(item.text)}
                       </p>
                     </div>

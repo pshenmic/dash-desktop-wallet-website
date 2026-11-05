@@ -4,6 +4,8 @@
 
 :root {
   --font-sans: var(--font-manrope), 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-dash-main: var(--font-manrope), 'Manrope', sans-serif;
+  --font-dash-grotesque: var(--font-manrope), 'Manrope', sans-serif;
   --color-brand: #4C7EFF;
   --color-brand-strong: #3560e0;
   --color-bg: #EFF0F1;
@@ -154,7 +156,7 @@ a {
 .nav-links a {
   color: var(--color-muted);
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   transition: color 0.15s;
 }
 
@@ -442,6 +444,12 @@ a {
   border-radius: 35px;
   background: var(--color-surface);
   overflow: hidden;
+}
+
+.faq-item button {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
 }
 
 /* ---------- Footer ---------- */
