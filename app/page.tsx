@@ -43,18 +43,18 @@ const NAV_LINKS = [
 const INTRO_CARDS = [
   {
     icon: '/figma/introlayers.svg',
-    title: 'Both layers, one seed',
-    body: 'Send DASH, register an identity, top it up and withdraw back to L1 without switching apps.',
+    title: 'Both Dash chains, one seed',
+    body: 'Access and pay with Dash in regular Dash Core chain or register an identity and get ready to deep dive in the Dash Web3 ecosystem',
   },
   {
     icon: '/figma/intro-shield.svg',
-    title: 'Private by choice',
-    body: 'Move credits into the shielded pool and transact between shielded addresses.',
+    title: 'Private by choice, optional',
+    body: 'Send between regular Dash addresses or move them in the shielded pool and transact between publically hidden shielded addresses',
   },
   {
     icon: '/figma/intro-node.svg',
-    title: 'Your node, if you want it',
-    body: 'Start instantly through Dashscan, or switch to a built-in SPV client that syncs from the Dash P2P network.',
+    title: 'Control your connection data',
+    body: 'Begin immediately through public Dashscan API or sync directly with P2P network to hide your wallet addresses from the others.',
   },
 ]
 
