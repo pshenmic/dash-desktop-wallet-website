@@ -44,7 +44,7 @@ const INTRO_CARDS = [
   {
     icon: '/figma/introlayers.svg',
     title: 'Both Dash chains, one seed',
-    body: 'Access and pay with Dash in regular Dash Core chain or register an identity and get ready to deep dive in the Dash Web3 ecosystem',
+    body: 'Access and pay with your regular Dash or register your first Dash Identity and get ready to deep dive in the Dash Web3 ecosystem',
   },
   {
     icon: '/figma/intro-shield.svg',

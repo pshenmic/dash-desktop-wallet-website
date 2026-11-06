@@ -28,17 +28,17 @@ const SLIDES: Slide[] = [
     label: 'Layer 2',
     title: 'Dash Platform',
     items: [
-      { icon: '/figma/icon-send.svg', text: 'Register **identities**, funded from L1 or Platform addresses' },
-      { icon: '/figma/icon-qr.svg', text: 'Top up, transfer and **withdraw credits** back to L1' },
-      { icon: '/figma/icon-contacts.svg', text: '**DPNS** usernames resolved automatically' },
-      { icon: '/figma/icon-instantsend.svg', text: '**Platform addresses** for direct credit transfers' },
+      { icon: '/figma/icon-send.svg', text: 'Register **Identities**, your digital IDs for interaction with Dash dApps' },
+      { icon: '/figma/icon-qr.svg', text: 'Bridge your Dash in, transact, and **withdraw Dash** back to L1' },
+      { icon: '/figma/icon-contacts.svg', text: 'Register **Dash Username** for your **Identity** identifier' },
+      { icon: '/figma/icon-instantsend.svg', text: 'Use **Platform addresses** for direct Dash transfers' },
     ],
   },
   {
     label: 'Network',
     title: 'DashPay',
     items: [
-      { icon: '/figma/icon-contacts.svg', text: 'Send and request payments with **usernames**' },
+      { icon: '/figma/icon-contacts.svg', text: 'Keep a contact list of your known **Dash users**' },
       { icon: '/figma/icon-send.svg', text: 'Pay **contacts** by name, not by address' },
       { icon: '/figma/icon-instantsend.svg', text: '**Instant** and final settlement' },
       { icon: '/figma/icon-qr.svg', text: 'Manage identities **on-chain**' },
@@ -77,7 +77,7 @@ export function FeatureCarousel() {
         <div>
           <div className="eyebrow">Features</div>
           <h2 className="text-[32px] font-semibold tracking-[-0.03em] leading-tight">
-            Two Layers. One Dash Desktop
+            Two Chains. One Dash Desktop
           </h2>
         </div>
         <div className="dots" role="tablist" aria-label="Feature slides">
